@@ -3,7 +3,7 @@ const SheetHandle = require("./sheet").SheetHandle;
 var cron = require('node-cron');
 
 async function startCronJob() {
-    cron.schedule('*/2 * * * *', async () => {
+    cron.schedule('*/15 * * * *', async () => {
         try {
         await SheetHandle();
         console.log('Sheet data updated successfully.');
