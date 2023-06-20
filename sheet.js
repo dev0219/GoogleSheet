@@ -3,7 +3,7 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 
 async function SheetHandle() {
-    const doc = new GoogleSpreadsheet('1uIYRNIQeS3mnIJp7hkwobUDvySIr0mCWl-LY_-n-ooQ');
+    const doc = new GoogleSpreadsheet('1Jy0BA29yyAk6DE7cnWnTRDDmwgSgt61Y5m6_oIeJ1U0');
  
     // useServiceAuth //
     try {
@@ -15,10 +15,8 @@ async function SheetHandle() {
     // Load the spreadsheet
     await doc.loadInfo();
     } catch (error) {
-
       console.log("-- console error")
-      console.log(error)
-      
+      console.log(error)      
     }
     
 
