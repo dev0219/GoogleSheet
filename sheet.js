@@ -49,24 +49,15 @@ async function SheetHandle() {
         });
     
         let headerRow = preSales_sheet.headerValues;
-        headerRow[0] = 'PreSales ID';
-        
-      
-        
-     
-    
+        headerRow[1] = 'PreSales ID';
         const jsonData = preSales_rows.map(row => {
           const rowData = Object.values(row._rawData);
           return Object.fromEntries(headerRow.map((header, index) => [header, rowData[index]]));
         });
-        let headerLine = {}
-        headerRow.forEach((header) => {
-            if (header == '') {
-                headerLine['PreSales ID'] = 'PreSales ID';
-            } else {
-                headerLine[header] = header;
-            }
-           
+        
+      
+        jsonData.forEach((json_row) => {
+          delete json_row['Entry ID'];
         })
 
         // Declare the data vars for each tab //
@@ -76,8 +67,8 @@ async function SheetHandle() {
         let leadsJsonData = [];
 
         // Push data with filtered data //
+        headerRow.shift()
         jsonData.forEach((row, index) => {
-            row[Object.keys(row)[0]] = index+2;
             if ( row['Deposit Paid'] == 'Yes' ) {
               membersJsonData.push(row)
              }
